@@ -9,9 +9,7 @@ FROM node:23-alpine
 
 WORKDIR /app
 RUN addgroup nodejs && \
-    adduser nodejs -G nodejs -D && \
-    mkdir -p ./dist/frontend
-VOLUME ./dist/frontend
+    adduser nodejs -G nodejs -D
 
 ARG DATABASE_URL
 ARG SERVER_PORT=8000
@@ -20,6 +18,7 @@ ENV DATABASE_URL=${DATABASE_URL}
 ENV SERVER_PORT=${SERVER_PORT}
 
 EXPOSE ${SERVER_PORT}/tcp
+VOLUME /app/dist/frontend
 
 COPY --from=build /app/package.json /app/bootstrap.sh .
 COPY --from=build /app/prisma ./prisma
