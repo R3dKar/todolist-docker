@@ -2,7 +2,7 @@
 
 npx prisma migrate deploy
 while [ $? -ne 0 ]; do
-    sleep 2
+    sleep 10
     npx prisma migrate deploy
 done 
 
