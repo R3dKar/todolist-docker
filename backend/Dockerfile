@@ -1,4 +1,4 @@
-FROM node:23-alpine AS build
+FROM node:23-alpine3.20 AS build
 
 WORKDIR /app
 
@@ -12,7 +12,7 @@ RUN npx prisma generate && \
     npm i --only=prod && \
     npx prisma generate
 
-FROM node:23-alpine
+FROM node:23-alpine3.20
 
 WORKDIR /app
 
